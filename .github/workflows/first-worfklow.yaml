@@ -1,0 +1,10 @@
+name: First workflow
+on: push
+jobs:
+    test-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test job welcome message
+              run: echo "Executing the test job"
+            - name: Readme file content
+              run: cat README.md
