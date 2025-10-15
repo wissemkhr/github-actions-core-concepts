@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run the app
-        run: echo docker run $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAM
+        run: echo docker run $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME
 
 
 # name: First workflow
