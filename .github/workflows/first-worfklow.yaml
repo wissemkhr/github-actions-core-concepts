@@ -1,13 +1,24 @@
 name: First workflow
 on: push
 jobs:
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build the app
+              run: |
+                  sleep 3
+                  echo "building the app ..."
     test-job:
         runs-on: ubuntu-latest
         steps:
-            - name: checkout repository
-              uses: actions/checkout@v4
-
-            - name: Test job welcome message
+            - name: Test the app
               run: |
-                  echo "Executing the test job."
-                  cat README.md
+                  sleep 3
+                  echo "testing the app ..."
+    deploy-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Deploy the app
+              run: |
+                  sleep 1
+                  echo "deploying the app ..."
