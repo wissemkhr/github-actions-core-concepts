@@ -7,7 +7,7 @@ jobs:
             - name: Build the app
               run: |
                   sleep 3
-                  echo "building the app ..."
+                  echo "building the app ..." > app.txt
     test-job:
         needs: build-job
         runs-on: ubuntu-latest
@@ -15,7 +15,8 @@ jobs:
             - name: Test the app
               run: |
                   sleep 3
-                  echo "testing the app ..."
+                  cat app.txt
+                  echo "testing the app ..." >> app.txt
     deploy-job:
         needs: test-job
         runs-on: ubuntu-latest
@@ -23,4 +24,5 @@ jobs:
             - name: Deploy the app
               run: |
                   sleep 1
-                  echo "deploying the app ..."
+                  cat app.txt
+                  echo "deploying the app ..." >> app.txt
