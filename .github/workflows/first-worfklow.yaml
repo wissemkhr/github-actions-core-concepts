@@ -4,6 +4,7 @@ env:
             CONTAINER_REGISTRY: docker.io
             DOCKER_USERNAME: wissem
             IMAGE_NAME: app
+            DOCKER_PASSWORD: 12345678
 jobs: 
   docker-job:
     runs-on: ubuntu-latest
@@ -12,7 +13,7 @@ jobs:
         run: echo docker build . -t $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME
 
       - name: Login
-        run: echo docker login --username=$DOCKER_USERNAME --password=*******
+        run: echo docker login --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD
 
       - name: Push the image
         run: echo docekr push $CONTAINER_REGISTRY/$DOCKER_USERNAME/$IMAGE_NAME
