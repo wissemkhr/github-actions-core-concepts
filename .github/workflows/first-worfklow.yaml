@@ -1,9 +1,8 @@
 name: Build and deploy
-on: push
+on: workflow_dispatch
 env:
             CONTAINER_REGISTRY: docker.io
             IMAGE_NAME: app
-            DOCKER_PASSWORD: 12345678
 jobs: 
   docker-job:
     runs-on: ubuntu-latest
