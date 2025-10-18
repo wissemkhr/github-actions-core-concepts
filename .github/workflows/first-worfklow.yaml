@@ -20,6 +20,7 @@ jobs:
     needs: docker-job
     concurrency:
       group: prod
+      cancel-in-progress: true
     runs-on: ubuntu-latest
     steps:
       - name: Run the app
