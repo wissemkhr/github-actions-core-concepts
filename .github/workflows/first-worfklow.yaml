@@ -7,7 +7,7 @@ jobs:
   docker-job:
     runs-on: ubuntu-latest
     steps: 
-      - name: Build the image
+      - name: Building the image
         run: echo docker build $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
 
       - name: Login
