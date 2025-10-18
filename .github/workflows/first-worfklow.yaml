@@ -18,6 +18,8 @@ jobs:
   
   deploy-job:
     needs: docker-job
+    concurrency:
+      group: prod
     runs-on: ubuntu-latest
     steps:
       - name: Run the app
