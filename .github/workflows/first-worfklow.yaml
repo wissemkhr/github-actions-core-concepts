@@ -1,32 +1,67 @@
-name: Build and deploy
+name: Test a docker image
 on: push
-env:
-            CONTAINER_REGISTRY: docker.io
-            IMAGE_NAME: app
-jobs: 
-  docker-job:
-    runs-on: ubuntu-latest
-    steps: 
-      - name: Building the image
-        run: echo docker build $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
-
-      - name: Login
-        run: echo docker login --username=${{ vars.DOCKER_USERNAME }} --password= ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Pushing the image
-        run: echo docekr push $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
-  
-  deploy-job:
-    needs: docker-job
-    concurrency:
-      group: prod
-      cancel-in-progress: true
+jobs:
+  deploy-on-ubuntu:
     runs-on: ubuntu-latest
     steps:
-      - name: Run the app
-        run: | 
-          echo docker run $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
-          sleep 3000
+      - name: Create a container on ubuntu
+        run: docker run hello-world
+  
+  deploy-on-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Create a container on windows
+        run: docker run hello-world
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# name: Build and deploy
+# on: push
+# env:
+#             CONTAINER_REGISTRY: docker.io
+#             IMAGE_NAME: app
+# jobs: 
+#   docker-job:
+#     runs-on: ubuntu-latest
+#     steps: 
+#       - name: Building the image
+#         run: echo docker build $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+
+#       - name: Login
+#         run: echo docker login --username=${{ vars.DOCKER_USERNAME }} --password= ${{ secrets.DOCKER_PASSWORD }}
+
+#       - name: Pushing the image
+#         run: echo docekr push $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+  
+#   deploy-job:
+#     needs: docker-job
+#     concurrency:
+#       group: prod
+#       cancel-in-progress: true
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Run the app
+#         run: | 
+#           echo docker run $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
+#           sleep 3000
 
 
 # name: First workflow
