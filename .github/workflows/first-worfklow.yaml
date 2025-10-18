@@ -13,7 +13,7 @@ jobs:
       - name: Login
         run: echo docker login --username=${{ vars.DOCKER_USERNAME }} --password= ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Push the image
+      - name: Pushing the image
         run: echo docekr push $CONTAINER_REGISTRY/${{ vars.DOCKER_USERNAME }}/$IMAGE_NAME
   
   deploy-job:
